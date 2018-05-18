@@ -19,10 +19,11 @@ export const ChuckModule = {
   },
   // for async calls
   actions: {
-    fetchRandomJoke(store) {
+    fetchRandomJoke(store, next) {
       ChuckService.getRandomJoke().then((joke) => {
         // call mutation
         store.commit('setRandomJoke', joke);
+        next();
       })
     }
   }
